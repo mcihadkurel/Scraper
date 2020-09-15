@@ -10,9 +10,9 @@ class Scraper
 
   def web_scraper
     jobs = []
-    jobLists = @document.css('li.job.inline.featured')
+    job_lists = @document.css('li.job.inline.featured')
     i = 1
-    jobLists.each do |j|
+    job_lists.each do |j|
       job = {
         title: j.css('a.jobTitle').text,
         companyname: j.css('a.companyName').text,

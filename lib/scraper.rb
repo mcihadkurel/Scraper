@@ -11,12 +11,14 @@ class Scraper
   def web_scraper
     jobs = []
     jobLists = @document.css('li.job.inline.featured')
-    jobLists.each do |jobList|
+    i = 1
+    jobLists.each do |j|
       job = {
-        title= jobList.css('a.jobTitle').text
-        companyname= jobList.css('a.companyName').text
-        location= joblist.css('span.jobLocation').text
-        application= joblist.css('span.applications').text
+        title: j.css('a.jobTitle').text,
+        companyname: j.css('a.companyName').text,
+        location: j.css('span.jobLocation').text,
+        application: j.css('span.applications').text
+      }
       job.each { |key, value| puts "#{key.capitalize} : #{value.capitalize}" }
       i += 1
       jobs << job

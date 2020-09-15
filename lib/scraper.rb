@@ -1,23 +1,29 @@
 require 'nokogiri'
-require 'httparty'
-require 'byebug'
+require 'open-uri'
 
-def scraper
-  url = 'https://cryptojobslist.com/'
-  unparsed_page = HTTParty.get(url)
-  parsed_page = Nokogiri::HTML(unparsed_page)
-  jobs = Array.new
-  job_listings = parsed_page.css('li.job.inline.featured')
-
-  per_page = job_listings.count
-  
-  job_listings.each do |job_listing|
-    job = {
-      title: job_listing.css('a.jobTitle').text
-    }
-    jobs << job
+class Scraper
+  def initialize(url, _doc, _document)
+    @url = url
+    @doc = ::OpenURI.open_uri(url)
+    @document = Nokogiri::HTML(@doc)
   end
-  byebug
+
+  def web_scraper
+    jobs = []
+    jobLists = @document.css('li.job.inline.featured')
+    jobLists.each do |jobList|
+      job = {
+        title= jobList.css('a.jobTitle').text
+        companyname= jobList.css('a.companyName').text
+        location= joblist.css('span.jobLocation').text
+        application= joblist.css('span.applications').text
+      job.each { |key, value| puts "#{key.capitalize} : #{value.capitalize}" }
+      i += 1
+      jobs << job
+    end
+    jobs.count
+  end
 end
 
-scraper
+scrapping = Scraper.new('https://cryptojobslist.com/', @doc, @document)
+scrapping.web_scraper

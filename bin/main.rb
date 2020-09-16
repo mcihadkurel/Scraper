@@ -2,15 +2,15 @@ require 'nokogiri'
 require 'open-uri'
 
 class Scraper
-  def initialize(url, _doc, _document)
+  def initialize(url, _unparsed_page, _parsed_page)
     @url = url
-    @doc = ::OpenURI.open_uri(url)
-    @document = Nokogiri::HTML(@doc)
+    @unparsed_page = ::OpenURI.open_uri(url)
+    @parsed_page = Nokogiri::HTML(@unparsed_page)
   end
 
   def web_scraper
-    jobs = []
-    job_lists = @document.css('li.job.inline.featured')
+    jobs = Array.new
+    job_lists = @parsed_page.css('li.job.inline.featured')
     i = 1
     job_lists.each do |job_list|
       job = {
@@ -27,5 +27,5 @@ class Scraper
   end
 end
 
-scrapping = Scraper.new('https://cryptojobslist.com/', @doc, @document)
+scrapping = Scraper.new('https://cryptojobslist.com/', @unparsed_page, @parsed_page)
 scrapping.web_scraper

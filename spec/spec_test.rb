@@ -2,10 +2,10 @@ require 'spec_helper'
 require_relative '../bin/main.rb'
 
 describe Scraper do
-  describe '#web_scraper' do
+  describe '#scrape' do
     let(:scrap) { Scraper.new('https://cryptojobslist.com/', @doc, @document) }
     it 'when getting the joblist' do
-      expect(scrap.web_scraper).to equal(29)
+      expect(scrap.scrape).to equal(30)
     end
   end
 end

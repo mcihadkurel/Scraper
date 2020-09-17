@@ -1,16 +1,17 @@
 require 'nokogiri'
 require 'open-uri'
 require 'byebug'
+require 'csv'
 
 class Scraper
-  def initialize(url, unparsed_page, parsed_page)
+  def initialize(url, _unparsed_page, _parsed_page)
     @url = url
     @unparsed_page = ::OpenURI.open_uri(url)
     @parsed_page = Nokogiri::HTML(@unparsed_page)
   end
 
   def scrape
-    jobs = Array.new
+    jobs = []
     job_lists = @parsed_page.css('li.job.inline.featured')
     job_lists.each do |job_list|
       job = {
@@ -28,6 +29,9 @@ class Scraper
       jobs << job
     end
     jobs.count
+    CSV.open('blockchain.csv', 'wb') do |csv|
+      csv << jobs
+    end
   end
 end
 

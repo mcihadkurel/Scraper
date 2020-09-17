@@ -31,5 +31,4 @@ class Scraper
     end
     jobs.count
   end
-
 end

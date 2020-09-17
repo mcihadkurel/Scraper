@@ -9,7 +9,7 @@
 
 ## Live Demo
 
-[Live Demo Link](https://repl.it/@muhammedcihadci/Scraper-1#bin/main.rb)
+[Live Demo Link](https://repl.it/@muhammedcihadci/Scraper-2#bin/main.rb)
 
 
 ## How To Run
@@ -20,7 +20,7 @@ Follow this guide to run project on your computer:
 
 - cd Scraper
 
-- in terminal run ruby ./bin/main.rb to see the results.
+- in terminal run ruby ./lib/scraper.rb to see the results.
 
 - in terminal run rspec spec/spec_test.rb to see the tests result.
 

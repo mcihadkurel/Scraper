@@ -5,8 +5,8 @@ require 'csv'
 
 class Scraper
 
-  attr_accessor :parsed_page
-  
+  attr_reader :url, :unparsed_page, :parsed_page
+
   def initialize(url, unparsed_page, parsed_page)
     @url = url
     @unparsed_page = ::OpenURI.open_uri(url)
@@ -32,9 +32,12 @@ class Scraper
       jobs << job
     end
     jobs.count
-    CSV.open('blockchain.csv', 'wb') do |csv|
-        csv << jobs
-      end
+  end
+
+  private
+
+  def hostel_card
+    parsed_page.css('li.job.inline.featured')
   end
 end
 

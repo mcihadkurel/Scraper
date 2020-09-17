@@ -29,6 +29,7 @@ class Scraper
       jobs << job
     end
     jobs.count
+
     CSV.open('blockchain.csv', 'wb') do |csv|
       csv << jobs
     end

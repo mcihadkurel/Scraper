@@ -9,7 +9,7 @@
 
 ## Live Demo
 
-[Live Demo Link](https://repl.it/@muhammedcihadci/Scraper#bin/main.rb)
+[Live Demo Link](https://repl.it/@muhammedcihadci/Scraper-1#bin/main.rb)
 
 
 ## How To Run

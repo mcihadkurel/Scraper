@@ -31,11 +31,10 @@ class Scraper
     end
     jobs.count
   end
-  
+
   private
 
-def hostel_card
-  parsed_page.css('li.job.inline.featured')
-end
-  
+  def hostel_card
+    parsed_page.css('li.job.inline.featured')
+  end
 end
